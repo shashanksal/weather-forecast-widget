@@ -1,10 +1,11 @@
+
 /**
  * Create  request and make Fetch Call
  * @param url {string} HTTP url for making request
  * @param method {string} HTTP request type GET | POST | PUT | DELETE
  * @param data {Object} body param object for POST request
  */
-export const makeRequest = async (url: string, method: string, data: any) => {
+export const makeRequest = async (url, method, data) => {
     //AbortController for Timeout fetch request safely
     const controller = new AbortController();
     const params = createParams(method, data);
@@ -35,14 +36,14 @@ export const makeRequest = async (url: string, method: string, data: any) => {
  * @param method {string} HTTP request type GET | POST | PUT | DELETE
  * @param data {Object} body param object for POST request
  */
-export const createParams = async (method: string, data: any) => {
-    let params = {
+export const createParams = async (method, data) => {
+    let params = Object.create({
         method: method,
         headers: {
             'Content-Type': 'applcation/json'
         },
         body: ''
-    }
+    })
     //Stringify data only if data present -> eg. POST request
     if (data) params.body = JSON.stringify(data);
     else delete params.body;
@@ -55,7 +56,7 @@ export const createParams = async (method: string, data: any) => {
  * @param url {string} HTTP url for making request
  * @param config Config object
  */
-export const makeFetchCall = async (url: string, config: Object) => {
+export const makeFetchCall = async (url, config) => {
     let obj = {
         error: false,
         response: {}
@@ -64,6 +65,7 @@ export const makeFetchCall = async (url: string, config: Object) => {
         const request = await fetch(url, config);
         if (request.status === 200) {
             const response = await request.json();
+            //TODO - implement Interface to assign response value
             obj.response = response;
         }
         else {
