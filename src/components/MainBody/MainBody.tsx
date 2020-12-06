@@ -36,7 +36,7 @@ const MainBody = (props: any) => {
                     direction="column"
                     alignItems="center"
                     justify="center"
-                    style={{ minHeight: '75vh' }}
+                    style={{ minHeight: '50vh' }}
                 >
                     <Grid item xs={4}>
                         <LocationForm></LocationForm>

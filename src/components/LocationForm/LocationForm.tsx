@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //Material UI Components
 import {
     TextField
 } from '@material-ui/core';
+
+import { makeRequest } from '../../controller/requestController';
+import { makeCityFetchCall } from '../../controller/customCalls'
+import { WEATHER_SEARCH_URL, WOEID_SEARCH_URL } from '../../utils/constants';
+import City from '../../utils/City';
 
 const styles = {
     alignItemsAndJustifyContent: {
@@ -23,7 +28,7 @@ const styles = {
 }
 
 const LocationForm = (props: any) => {
-
+    const [location, setLocation] = useState<string>('');
     useEffect(() => {
         // Check if Browser supports Geolocation API.
         // If true, proceed
@@ -38,9 +43,37 @@ const LocationForm = (props: any) => {
         }
     }, []);
 
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
+        const searchUrl = `${WEATHER_SEARCH_URL}` + location;
+        let r1 = makeCityFetchCall(searchUrl, "GET", "")
+            .then(res => {
+                if (res && typeof res.response !== 'undefined' && !res.error) {
+                    let searchResponse = res.response;
+                    let city = new City(searchResponse);
+                    return city.woeid;
+                }
+                else {
+                    console.log("City name not valid");
+                }
+            })
+            .then(woeid => {
+                //console.log("Woeid ===", woeid);
+                const woeidUrl = `${WOEID_SEARCH_URL}` + woeid;
+                let r2 = makeRequest(woeidUrl, "GET", "")
+                    .then(res => {
+                        console.log("City result ===", res)
+                    })
+            })
+    }
+
+    const handleChange = (event: any) => {
+        setLocation(event.target.value)
+    }
+
     return (
         <div style={styles.alignItemsAndJustifyContent}>
-            <form className="weather-form" noValidate autoComplete="off">
+            <form className="weather-form" noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <TextField
                     id="standard-full-width"
                     label="Location"
@@ -51,6 +84,8 @@ const LocationForm = (props: any) => {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    value={location}
+                    onChange={handleChange}
                 />
             </form>
         </div>
