@@ -13,15 +13,20 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    appBar: {
+        background: '#009688',
+        alignItems: 'center'
     }
 }
 
 const AppHeader = (props: any) => {
+    //const { classes } = props;
     return (
         <Paper>
-            <AppBar position="static" style={{ background: '#009688' }}>
+            <AppBar position="static" style={styles.appBar}>
                 <Toolbar>
-                    <Typography variant="h5" className="headStyle" align="center" display="block">
+                    <Typography variant="h5" align="center">
                         Weather Forecast Tool
                 </Typography>
                 </Toolbar>

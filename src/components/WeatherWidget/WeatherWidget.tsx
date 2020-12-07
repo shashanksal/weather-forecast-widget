@@ -30,8 +30,7 @@ const WeatherWidget = () => {
             <Grid container spacing={3}>
                 {
                     data.length > 0 ?
-                        data.map((weather: any, i: number) => {
-                            //return (<div>This is data</div>)
+                        data.slice(1, 5).map((weather: any, i: number) => {
                             return (
                                 <Grid item md={3} key={i}>
                                     <WeatherCard {...weather} key={i} />
