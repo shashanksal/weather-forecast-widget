@@ -8,7 +8,6 @@ import {
 //Custom components
 import AppHeader from '../Header';
 import MainBody from '../MainBody';
-import logo from '../../assets/logo.svg';
 import '../../App.css';
 
 const App = () => {
