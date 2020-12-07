@@ -8,6 +8,7 @@ import {
 
 //Custom component import
 import LocationForm from '../LocationForm';
+import WeatherWidget from '../WeatherWidget';
 import Image from '../../assets/pexels-kaique-rocha-125510.jpg';
 
 const styles = {
@@ -37,10 +38,23 @@ const MainBody = (props: any) => {
                     alignItems="center"
                     justify="center"
                     style={{ minHeight: '50vh' }}
+                    className="containier-gridbox"
                 >
-                    <Grid item xs={4}>
+                    <Grid item xs={5}>
                         <LocationForm></LocationForm>
+
                     </Grid>
+                </Grid>
+                <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                >
+                    <Grid item xs={8}>
+                        <WeatherWidget></WeatherWidget>
+                    </Grid>
+
                 </Grid>
             </div>
         </Paper>

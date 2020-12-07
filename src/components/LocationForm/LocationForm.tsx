@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
 
 //Material UI Components
 import {
-    TextField
+    TextField,
+    Button
 } from '@material-ui/core';
 
-import { makeRequest } from '../../controller/requestController';
-import { makeCityFetchCall } from '../../controller/customCalls'
+//import { makeRequest } from '../../controller/requestController';
+import { makeCityFetchCall, makeWeatherCalls } from '../../controller/customCalls'
 import { WEATHER_SEARCH_URL, WOEID_SEARCH_URL } from '../../utils/constants';
+import { storeWeatherData } from '../../store/actions';
 import City from '../../utils/City';
 
 const styles = {
     alignItemsAndJustifyContent: {
-        width: 500,
-        height: 80,
+        width: 600,
+        height: 150,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -28,7 +31,14 @@ const styles = {
 }
 
 const LocationForm = (props: any) => {
-    const [location, setLocation] = useState<string>('');
+    const dispatch = useDispatch();
+    const weatherData = useSelector((state: RootStateOrAny) => state?.weatherData);
+
+    console.log("Weather Data ===", weatherData);
+    const [location, setLocation] = React.useState<string>('');
+    const [showLoader, setShowLoader] = React.useState<boolean>(false);
+
+
     useEffect(() => {
         // Check if Browser supports Geolocation API.
         // If true, proceed
@@ -46,7 +56,7 @@ const LocationForm = (props: any) => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         const searchUrl = `${WEATHER_SEARCH_URL}` + location;
-        let r1 = makeCityFetchCall(searchUrl, "GET", "")
+        makeCityFetchCall(searchUrl, "GET", "")
             .then(res => {
                 if (res && typeof res.response !== 'undefined' && !res.error) {
                     let searchResponse = res.response;
@@ -55,15 +65,19 @@ const LocationForm = (props: any) => {
                 }
                 else {
                     console.log("City name not valid");
+                    throw ("City name not valid");
                 }
             })
             .then(woeid => {
-                //console.log("Woeid ===", woeid);
-                const woeidUrl = `${WOEID_SEARCH_URL}` + woeid;
-                let r2 = makeRequest(woeidUrl, "GET", "")
-                    .then(res => {
-                        console.log("City result ===", res)
-                    })
+                if (woeid) {
+                    const woeidUrl = `${WOEID_SEARCH_URL}` + woeid;
+                    makeWeatherCalls(woeidUrl, "GET", "")
+                        .then(res => {
+                            console.log("City result ===", res);
+                            dispatch(storeWeatherData(res.response));
+                        })
+                }
+                console.log(showLoader);
             })
     }
 
@@ -87,6 +101,9 @@ const LocationForm = (props: any) => {
                     value={location}
                     onChange={handleChange}
                 />
+                <Button variant="contained" color="primary" className="submit-btn" onClick={handleSubmit}>
+                    SEARCH
+                </Button>
             </form>
         </div>
     )
