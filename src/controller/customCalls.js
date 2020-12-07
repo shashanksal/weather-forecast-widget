@@ -9,3 +9,13 @@ export const makeCityFetchCall = async (url, method, data) => {
             };
         })
 }
+
+export const makeWeatherCalls = async (url, method, data) => {
+    return makeRequest(url, method, data)
+        .then(res => {
+            return {
+                error: res.error,
+                response: res?.response.consolidated_weather
+            }
+        })
+}
