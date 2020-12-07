@@ -12,7 +12,6 @@ const weatherReducer = (
 ): any => {
     switch (action.type) {
         case actionTypes.TYPE_ADD_WEATHER_DATA:
-            console.log("Here !!!", action);
             const newWeatherData: any = [
                 action.weatherData
             ]

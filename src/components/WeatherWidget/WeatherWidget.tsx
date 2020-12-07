@@ -23,24 +23,24 @@ const styles = {
 const WeatherWidget = () => {
 
     const weatherData = useSelector((state: RootStateOrAny) => state?.weatherData);
-
-    console.log("Weather data widget ===", weatherData[0])
+    let data = typeof weatherData !== "undefined" ? weatherData[0] : []
 
     return (
         <div style={styles.weatherWidgetContainer}>
             <Grid container spacing={3}>
-                <Grid item md={3}>
-                    <WeatherCard />
-                </Grid>
-                <Grid item md={3}>
-                    <WeatherCard />
-                </Grid>
-                <Grid item md={3}>
-                    <WeatherCard />
-                </Grid>
-                <Grid item md={3}>
-                    <WeatherCard />
-                </Grid>
+                {
+                    data.length > 0 ?
+                        data.map((weather: any, i: number) => {
+                            //return (<div>This is data</div>)
+                            return (
+                                <Grid item md={3} key={i}>
+                                    <WeatherCard {...weather} key={i} />
+                                </Grid>
+                            )
+                        })
+                        :
+                        <div></div>
+                }
             </Grid>
         </div>
     )
