@@ -10,6 +10,9 @@ import {
 const styles = {
     headStyle: {
         textAlign: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 }
 
@@ -18,7 +21,7 @@ const AppHeader = (props: any) => {
         <Paper>
             <AppBar position="static" style={{ background: '#009688' }}>
                 <Toolbar>
-                    <Typography variant="h6" className="headStyle" align="center">
+                    <Typography variant="h5" className="headStyle" align="center" display="block">
                         Weather Forecast Tool
                 </Typography>
                 </Toolbar>

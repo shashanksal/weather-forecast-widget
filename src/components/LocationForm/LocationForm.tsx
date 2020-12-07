@@ -7,7 +7,6 @@ import {
     Button
 } from '@material-ui/core';
 
-//import { makeRequest } from '../../controller/requestController';
 import { makeCityFetchCall, makeWeatherCalls } from '../../controller/customCalls'
 import { WEATHER_SEARCH_URL, WOEID_SEARCH_URL } from '../../utils/constants';
 import { storeWeatherData } from '../../store/actions';
@@ -34,10 +33,8 @@ const LocationForm = (props: any) => {
     const dispatch = useDispatch();
     const weatherData = useSelector((state: RootStateOrAny) => state?.weatherData);
 
-    console.log("Weather Data ===", weatherData);
     const [location, setLocation] = React.useState<string>('');
-    const [showLoader, setShowLoader] = React.useState<boolean>(false);
-
+    //const [showLoader, setShowLoader] = React.useState<boolean>(false);
 
     useEffect(() => {
         // Check if Browser supports Geolocation API.
@@ -73,11 +70,9 @@ const LocationForm = (props: any) => {
                     const woeidUrl = `${WOEID_SEARCH_URL}` + woeid;
                     makeWeatherCalls(woeidUrl, "GET", "")
                         .then(res => {
-                            console.log("City result ===", res);
                             dispatch(storeWeatherData(res.response));
                         })
                 }
-                console.log(showLoader);
             })
     }
 

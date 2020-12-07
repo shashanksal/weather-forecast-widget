@@ -2,26 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
+//Material UI Components
 import {
     Card,
-    CardActions,
     CardContent,
-    Button,
     Typography,
-    CardMedia
+    CardMedia,
+    Grid
 } from '@material-ui/core';
+
+import { WEATHER_ICONS_URL } from '../../utils/constants';
 
 
 const styles = {
     card: {
-        minWidth: 175,
+        minWidth: 190,
     },
-    title: {
+    date: {
         marginBottom: 16,
-        fontSize: 14,
+        fontSize: 18,
     },
-    pos: {
+    info: {
         marginBottom: 12,
+
     },
     weatherIco: {
         width: 50,
@@ -31,37 +34,57 @@ const styles = {
         justifyContent: 'center',
         margin: "10px 50px"
     },
+    temp: {
+        fontWeight: 600,
+        fontSize: 28
+    }
 };
 
-function SimpleCard(props: any) {
+const WeatherCard = (props: any) => {
     const { classes } = props;
+    let icoUrl = `${WEATHER_ICONS_URL}${props.weather_state_abbr}.svg`;
 
     return (
         <div>
             <Card className={classes.card}>
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary">
-                        Date
+                    <Typography className={classes.date} color="textPrimary" align="center">
+                        {new Date(props.applicable_date).toDateString()}
                     </Typography>
                     <CardMedia
                         className={classes.weatherIco}
-                        image="https://www.metaweather.com//static/img/weather/lc.svg"
+                        image={icoUrl}
                         title="Weather Icon"
                     />
-                    <Typography className={classes.pos} color="textSecondary">
-                        Details
+                    <Typography className={classes.info} color="textSecondary" align="center">
+                        {props.weather_state_name}
                     </Typography>
-                    <Typography component="p">
-                        Additional details
-                    </Typography>
+                    <Grid container spacing={6}>
+                        <Grid item md={6}>
+                            <Typography variant="body2" align="center">
+                                Max Temp
+                            </Typography>
+                            <Typography variant="body1" align="center" className={classes.temp}>
+                                {Math.round(props.max_temp * 10) / 10}
+                            </Typography>
+                        </Grid>
+                        <Grid item md={6}>
+                            <Typography variant="body2" align="center">
+                                Min Temp
+                            </Typography>
+                            <Typography variant="body1" align="center" className={classes.temp}>
+                                {Math.round(props.min_temp * 10) / 10}
+                            </Typography>
+                        </Grid>
+                    </Grid>
                 </CardContent>
             </Card>
         </div>
     );
 }
 
-SimpleCard.propTypes = {
+WeatherCard.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleCard);
+export default withStyles(styles)(WeatherCard);
