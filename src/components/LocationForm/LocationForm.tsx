@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { trackPromise } from 'react-promise-tracker';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
 
 //Material UI Components
@@ -53,8 +54,10 @@ const LocationForm = (props: any) => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         const searchUrl = `${WEATHER_SEARCH_URL}` + location;
-        makeCityFetchCall(searchUrl, "GET", "")
+
+        trackPromise(makeCityFetchCall(searchUrl, "GET", "")
             .then(res => {
+                console.log(res);
                 if (res && typeof res.response !== 'undefined' && !res.error) {
                     let searchResponse = res.response;
                     let city = new City(searchResponse);
@@ -62,7 +65,7 @@ const LocationForm = (props: any) => {
                 }
                 else {
                     console.log("City name not valid");
-                    throw ("City name not valid");
+                    alert("City name not valid");
                 }
             })
             .then(woeid => {
@@ -74,6 +77,7 @@ const LocationForm = (props: any) => {
                         })
                 }
             })
+        )
     }
 
     const handleChange = (event: any) => {
