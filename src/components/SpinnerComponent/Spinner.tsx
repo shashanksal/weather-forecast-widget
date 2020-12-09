@@ -1,5 +1,5 @@
 import React from "react";
-import { usePromiseTracker } from "react-promise-tracker";
+import { usePromiseTracker } from "react-promise-tracker"; //Library for tracking Fetch, Axios reqeusts
 import Loader from "react-loader-spinner";
 
 const spinneStyles = {

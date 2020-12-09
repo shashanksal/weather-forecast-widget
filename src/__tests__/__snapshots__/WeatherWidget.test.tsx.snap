@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test category WeatherWidget matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    style="width: 800px; height: auto; display: flex; align-items: center; justify-content: center;"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    >
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+## Weather Forecast Toolkit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### WeatherForecaster
 
-## Available Scripts
+React based web application that leverages [MetaWeather APIs](https://www.metaweather.com/api/) to display weather for next 4 days at the searched location.
 
-In the project directory, you can run:
+## Project Status
 
-### `npm start`
+This project is a personal project and currently in development. Users can see weather forecast for next 4 days at the current stage. UI enhancements, Unit tests and other imporvements are ongoing.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation and Setup Instructions
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
-### `npm test`
+Installation:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm install`
 
-### `npm run build`
+To Run Test Suite:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`npm test`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To Start Server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm start`
 
-### `npm run eject`
+To Visit App:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`localhost:3000/`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To Generate Code Coverage:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`npm run test:coverage`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Folder Structure
 
-## Learn More
+After creation, your project should look like this:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+appName/
+  README.md
+  node_modules/
+  package.json
+  public/
+    index.html
+    favicon.ico
+    manifest.json
+    robots.txt
+  src/
+    __tests__/
+      ......
+      ......
+    assets/
+      ......
+      ......
+    components/
+      App/
+        .....
+      Header/
+        .....
+      .....
+      .....
+    controller/
+      ......
+      ......
+    store/
+      ......
+      ......
+    utils/
+      ......
+      ......
+    App.css
+    index.css
+    index.tsx
+    setupTests.ts
+    global.d.ts
+  .editorconfig
+  jest.config.js
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+For the project to build, **these files must exist with exact filenames**:
+
+- `public/index.html` is the page template;
+- `src/index.tsx` is the TypeScript entry point.
+
+You can delete or rename the other files.
+
+You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack.
+
+## Tech Stack used
+
+- React
+- Redux
+- Typescript
+- Material-UI for components
+- Jest
+
+## Reflection
+
+This was a sample project I decided to undertake as an assignment. I started this process by using the `create-react-app` boilerplate, then adding `redux` and `@material-ui/core`.
+
+One of the main challenges I ran into was Testing using Jest, Typescript, Redux all together. This lead me to spend a day more on a researching how to integrate all together. Due to project time constraints and other work comitments, I had to compromise on UI design, validations and Geolocation API.
+
+At the end of the day, the technologies implemented in this project are React, Typescript, Redux, Material-UI, and a significant amount of JavaScript/ Typescript, TSX, and styles. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on integrating Geolocation API to be able to auto load location in the search box. Additionally, I plan to implement multi city search (Search and select one city in a list of similarly named cities, e.g. Newcastle, NSW, AU and Newcastle upon Tyne, UK)

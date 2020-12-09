@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Material UI imports
 import {
     AppBar,
     Typography,
@@ -20,8 +21,7 @@ const styles = {
     }
 }
 
-const AppHeader = (props: any) => {
-    //const { classes } = props;
+const AppHeader = () => {
     return (
         <Paper>
             <AppBar position="static" style={styles.appBar}>

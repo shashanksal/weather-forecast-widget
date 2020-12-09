@@ -4,8 +4,6 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
     "@types/jest": "^26.0.16",
     "@types/node": "^12.19.8",
@@ -23,8 +21,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config ./jest.config.js",
+		"test:watch": "jest --watch",
+		"test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config ./jest.config.js --coverage"
   },
   "eslintConfig": {
     "extends": [
@@ -45,10 +45,19 @@
     ]
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@types/jest": "^26.0.17",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
     "@types/react-loader-spinner": "^3.1.2",
     "@types/react-redux": "^7.1.11",
-    "@types/redux": "^3.6.0"
+    "@types/redux": "^3.6.0",
+    "@types/redux-mock-store": "^1.0.2",
+    "eslint": "^7.15.0",
+    "prettier": "2.2.1",
+    "redux-mock-store": "^1.5.4",
+    "ts-jest": "^26.4.4"
   }
 }

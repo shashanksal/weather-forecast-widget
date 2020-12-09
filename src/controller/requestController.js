@@ -5,7 +5,7 @@
  * @param method {string} HTTP request type GET | POST | PUT | DELETE
  * @param data {Object} body param object for POST request
  */
-export const makeRequest = async (url, method, data) => {
+const makeRequest = async (url, method, data) => {
     //AbortController for Timeout fetch request safely
     const controller = new AbortController();
     const params = createParams(method, data);
@@ -36,7 +36,7 @@ export const makeRequest = async (url, method, data) => {
  * @param method {string} HTTP request type GET | POST | PUT | DELETE
  * @param data {Object} body param object for POST request
  */
-export const createParams = async (method, data) => {
+const createParams = async (method, data) => {
     let params = Object.create({
         method: method,
         headers: {
@@ -56,7 +56,7 @@ export const createParams = async (method, data) => {
  * @param url {string} HTTP url for making request
  * @param config Config object
  */
-export const makeFetchCall = async (url, config) => {
+const makeFetchCall = async (url, config) => {
     let obj = {
         error: false,
         response: {}
@@ -79,3 +79,11 @@ export const makeFetchCall = async (url, config) => {
     }
     return obj;
 }
+
+export default {
+	makeRequest,
+	createParams,
+	makeFetchCall
+}
+
+
