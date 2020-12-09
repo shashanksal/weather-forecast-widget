@@ -35,7 +35,8 @@ const makeWeatherCalls = async (url, method, data) => {
         })
 }
 
-export default {
+const customCalls = {
 	makeCityFetchCall,
 	makeWeatherCalls
 }
+export default customCalls;

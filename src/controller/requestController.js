@@ -59,7 +59,7 @@ const createParams = async (method, data) => {
 const makeFetchCall = async (url, config) => {
     let obj = {
         error: false,
-        response: {}
+        response: Object
     }
     try {
         const request = await fetch(url, config);
@@ -80,10 +80,12 @@ const makeFetchCall = async (url, config) => {
     return obj;
 }
 
-export default {
+const requestController = {
 	makeRequest,
 	createParams,
 	makeFetchCall
 }
+
+export default requestController;
 
 
