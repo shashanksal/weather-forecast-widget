@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { trackPromise } from 'react-promise-tracker';
-import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
+import {  useDispatch } from 'react-redux'
 
 //Material UI Components
 import {
@@ -8,10 +8,13 @@ import {
     Button
 } from '@material-ui/core';
 
-import { makeCityFetchCall, makeWeatherCalls } from '../../controller/customCalls'
+import customCalls from '../../controller/customCalls'
+
 import { WEATHER_SEARCH_URL, WOEID_SEARCH_URL } from '../../utils/constants';
 import { storeWeatherData } from '../../store/actions';
 import City from '../../utils/City';
+
+//const customCalls = require('../../controller/customCalls');
 
 const styles = {
     alignItemsAndJustifyContent: {
@@ -30,12 +33,9 @@ const styles = {
     }
 }
 
-const LocationForm = (props: any) => {
+const LocationForm = () => {
     const dispatch = useDispatch();
-    const weatherData = useSelector((state: RootStateOrAny) => state?.weatherData);
-
     const [location, setLocation] = React.useState<string>('');
-    //const [showLoader, setShowLoader] = React.useState<boolean>(false);
 
     useEffect(() => {
         // Check if Browser supports Geolocation API.
@@ -55,7 +55,7 @@ const LocationForm = (props: any) => {
         event.preventDefault();
         const searchUrl = `${WEATHER_SEARCH_URL}` + location;
 
-        trackPromise(makeCityFetchCall(searchUrl, "GET", "")
+        trackPromise(customCalls.makeCityFetchCall(searchUrl, "GET", "")
             .then(res => {
                 console.log(res);
                 if (res && typeof res.response !== 'undefined' && !res.error) {
@@ -71,7 +71,7 @@ const LocationForm = (props: any) => {
             .then(woeid => {
                 if (woeid) {
                     const woeidUrl = `${WOEID_SEARCH_URL}` + woeid;
-                    makeWeatherCalls(woeidUrl, "GET", "")
+                    customCalls.makeWeatherCalls(woeidUrl, "GET", "")
                         .then(res => {
                             dispatch(storeWeatherData(res.response));
                         })

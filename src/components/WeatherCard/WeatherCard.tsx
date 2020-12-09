@@ -62,7 +62,7 @@ const WeatherCard = (props: any) => {
                     <Grid container spacing={6}>
                         <Grid item md={6}>
                             <Typography variant="body2" align="center">
-                                Max Temp
+                                Max Temp (°C)
                             </Typography>
                             <Typography variant="body1" align="center" className={classes.temp}>
                                 {Math.round(props.max_temp * 10) / 10}
@@ -70,7 +70,7 @@ const WeatherCard = (props: any) => {
                         </Grid>
                         <Grid item md={6}>
                             <Typography variant="body2" align="center">
-                                Min Temp
+                                Min Temp (°C)
                             </Typography>
                             <Typography variant="body1" align="center" className={classes.temp}>
                                 {Math.round(props.min_temp * 10) / 10}
