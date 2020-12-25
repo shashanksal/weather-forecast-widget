@@ -12,25 +12,17 @@ This project is a personal project and currently in development. Users can see w
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
-Installation:
+- Installation: `npm install`
 
-`npm install`
+- To Run Test Suite: `npm test`
 
-To Run Test Suite:
+- To Build Static Client: `npm run build`
 
-`npm test`
+- To Start server: `npm start`
 
-To Start Server:
+- To Visit App: `localhost:8080/`
 
-`npm start`
-
-To Visit App:
-
-`localhost:3000/`
-
-To Generate Code Coverage:
-
-`npm run test:coverage`
+- To Generate Code Coverage: `npm run test:coverage`
 
 ## Folder Structure
 
@@ -41,6 +33,7 @@ appName/
   README.md
   node_modules/
   package.json
+  build/
   public/
     index.html
     favicon.ico
@@ -101,9 +94,9 @@ This was a sample project I decided to undertake as an assignment. I started thi
 
 One of the main challenges I ran into was Testing using Jest, Typescript, Redux all together. This lead me to spend a day more on a researching how to integrate all together. Due to project time constraints and other work comitments, I had to compromise on UI design, validations and Geolocation API.
 
-At the end of the day, the technologies implemented in this project are React, Typescript, Redux, Material-UI, and a significant amount of JavaScript/ Typescript, TSX, and styles. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. 
-
+At the end of the day, the technologies implemented in this project are React, Typescript, Redux, Material-UI, and a significant amount of JavaScript/ Typescript, TSX, and styles. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes.
 
 ## TODOs
- * In the next iteration I plan on integrating Geolocation API to be able to auto load location in the search box. 
- * Additionally, I plan to implement multi city search (Search and select one city in a list of similarly named cities, e.g. Newcastle, NSW, AU and Newcastle upon Tyne, UK)
+
+- In the next iteration I plan on integrating Geolocation API to be able to auto load location in the search box.
+- Additionally, I plan to implement multi city search (Search and select one city in a list of similarly named cities, e.g. Newcastle, NSW, AU and Newcastle upon Tyne, UK)

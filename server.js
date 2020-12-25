@@ -9,6 +9,10 @@ const WOEID_SEARCH_URL = `${MET_WEATHER_BASE_URL}/`;
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+/**
+ * GET - Get Metaweather City entity
+ * 	/metaweather/city/Rivendell -  Get Metaweather City entity with city name 'Rivendell'
+ */
 app.get('/metaweather/city/:city', (req, res) => {
 	const city = req.params.city;
 	const searchUrl = `${WEATHER_SEARCH_URL}` + city;
@@ -20,6 +24,10 @@ app.get('/metaweather/city/:city', (req, res) => {
 		});
 });
 
+/**
+ * GET - Get Metaweather Weather information for next 5 days
+ * 	/metaweather/woeid/54321 -  Get Metaweather Weather for city with woeid '54321'
+ */
 app.get('/metaweather/woeid/:id', (req, res) => {
 	const id = req.params.id;
 	const searchUrl = `${WOEID_SEARCH_URL}` + id;
@@ -31,6 +39,9 @@ app.get('/metaweather/woeid/:id', (req, res) => {
 		});
 });
 
+/**
+ * GET - Main endpoint to the app serving static build files
+ */
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
