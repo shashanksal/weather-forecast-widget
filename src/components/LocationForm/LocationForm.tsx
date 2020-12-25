@@ -10,7 +10,7 @@ import {
 
 import customCalls from '../../controller/customCalls'
 
-import { WEATHER_SEARCH_URL, WOEID_SEARCH_URL } from '../../utils/constants';
+import { METAWEATHER_CITY, METAWEATHER_WOEID ,  } from '../../utils/constants';
 import { storeWeatherData } from '../../store/actions';
 import City from '../../utils/City';
 
@@ -36,7 +36,7 @@ const styles = {
 const LocationForm = () => {
     const dispatch = useDispatch();
     const [location, setLocation] = React.useState<string>('');
-
+	const [dialogueOpen, setDialogueOpen] = React.useState<boolean>(false);
     useEffect(() => {
         // Check if Browser supports Geolocation API.
         // If true, proceed
@@ -53,11 +53,10 @@ const LocationForm = () => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        const searchUrl = `${WEATHER_SEARCH_URL}` + location;
-
+		const searchUrl = `${METAWEATHER_CITY}` + location;
         trackPromise(customCalls.makeCityFetchCall(searchUrl, "GET", "")
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 if (res && typeof res.response !== 'undefined' && !res.error) {
                     let searchResponse = res.response;
                     let city = new City(searchResponse);
@@ -70,7 +69,7 @@ const LocationForm = () => {
             })
             .then(woeid => {
                 if (woeid) {
-                    const woeidUrl = `${WOEID_SEARCH_URL}` + woeid;
+					const woeidUrl = `${METAWEATHER_WOEID}` + woeid;
                     customCalls.makeWeatherCalls(woeidUrl, "GET", "")
                         .then(res => {
                             dispatch(storeWeatherData(res.response));
