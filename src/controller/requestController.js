@@ -15,16 +15,16 @@ const makeRequest = async (url, method, data) => {
 	}, 20000);
 
 	return makeFetchCall(url, config)
-		.then((res) => {
+		.then(res => {
 			return res;
 		})
-		.catch((err) => {
-			if (err.name === 'AbortError') {
+		.catch(err => {
+			if (err.name === "AbortError") {
 				return {
 					error: true,
 					response: {
-						Message: err,
-					},
+						Message: err
+					}
 				};
 			}
 		});
@@ -39,10 +39,10 @@ const createParams = async (method, data) => {
 	let params = Object.create({
 		method: method,
 		headers: {
-			'Content-Type': 'applcation/json',
-			'Access-Controll-Allow-Origin': '*',
+			"Content-Type": "applcation/json",
+			"Access-Controll-Allow-Origin": "*"
 		},
-		body: '',
+		body: ""
 	});
 	//Stringify data only if data present -> eg. POST request
 	if (data) params.body = JSON.stringify(data);
@@ -59,11 +59,11 @@ const createParams = async (method, data) => {
 const makeFetchCall = async (url, config) => {
 	let obj = {
 		error: false,
-		response: Object,
+		response: Object
 	};
 	try {
 		const request = await fetch(url, config);
-		if (typeof request !== 'undefined' && request.status === 200) {
+		if (typeof request !== "undefined" && request.status === 200) {
 			const response = await request.json();
 			//TODO - implement Interface to assign response value
 			obj.response = response;
@@ -81,7 +81,7 @@ const makeFetchCall = async (url, config) => {
 const requestController = {
 	makeRequest,
 	createParams,
-	makeFetchCall,
+	makeFetchCall
 };
 
 export default requestController;

@@ -1,1 +1,1 @@
-export { default } from './LocationForm';
+export { default } from "./LocationForm";
