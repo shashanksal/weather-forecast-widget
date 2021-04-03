@@ -1,11 +1,11 @@
 import React from "react";
-import { render, fireEvent, waitForElement } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
-import AppHeader from '../components/Header';
+import AppHeader from "../components/Header";
 
-describe('test category', () => {
-	it("AppHeader matches snapshot" , () =>{
-		const {asFragment} = render(<AppHeader />);
+describe("test category", () => {
+	it("AppHeader matches snapshot", () => {
+		const { asFragment } = render(<AppHeader />);
 		expect(asFragment()).toMatchSnapshot();
-	})
-})
+	});
+});

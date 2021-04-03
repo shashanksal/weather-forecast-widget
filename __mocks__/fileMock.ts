@@ -1,1 +1,2 @@
-export default '';
+const fileMock = "";
+export default fileMock;
