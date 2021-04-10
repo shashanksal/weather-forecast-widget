@@ -39,8 +39,8 @@ const createParams = async (method, data) => {
 	let params = Object.create({
 		method: method,
 		headers: {
-			"Content-Type": "applcation/json",
-			"Access-Controll-Allow-Origin": "*"
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"
 		},
 		body: ""
 	});
