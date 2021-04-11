@@ -46,4 +46,8 @@ app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.listen(8080, () => console.log("Metaweather middleware running on port 8080"));
+app.listen(8080, () =>
+	console.log(
+		"Metaweather middleware running on port 8080.\n Goto http://localhost:8080/ to access the app"
+	)
+);
