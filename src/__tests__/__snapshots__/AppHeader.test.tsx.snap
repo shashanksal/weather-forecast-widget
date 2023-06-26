@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test category AppHeader matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+      style="background: rgb(0, 150, 136); align-items: center;"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter"
+        >
+          Weather Forecast Tool
+        </h5>
+      </div>
+    </header>
+  </div>
+</DocumentFragment>
+`;

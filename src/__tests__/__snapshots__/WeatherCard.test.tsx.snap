@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test category WeatherCard matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="MuiPaper-root MuiCard-root WeatherCard-card-1 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiCardContent-root"
+      >
+        <p
+          class="MuiTypography-root WeatherCard-date-2 MuiTypography-body1 MuiTypography-colorTextPrimary MuiTypography-alignCenter"
+        >
+          Invalid Date
+        </p>
+        <div
+          class="MuiCardMedia-root WeatherCard-weatherIco-4"
+          style="background-image: url(https://www.metaweather.com/static/img/weather/undefined.svg);"
+          title="Weather Icon"
+        />
+        <p
+          class="MuiTypography-root WeatherCard-info-3 MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+        />
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-6"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-6"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-alignCenter"
+            >
+              Max Temp (°C)
+            </p>
+            <p
+              class="MuiTypography-root WeatherCard-temp-5 MuiTypography-body1 MuiTypography-alignCenter"
+            >
+              NaN
+            </p>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-6"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-alignCenter"
+            >
+              Min Temp (°C)
+            </p>
+            <p
+              class="MuiTypography-root WeatherCard-temp-5 MuiTypography-body1 MuiTypography-alignCenter"
+            >
+              NaN
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
