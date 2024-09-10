@@ -4,7 +4,7 @@
 	"private": true,
 	"proxy": "http://localhost:8080",
 	"dependencies": {
-		"@material-ui/core": "^4.11.2",
+		"@mui/material": "^5.0.0",
 		"@testing-library/user-event": "^12.5.0",
 		"@types/jest": "^26.0.16",
 		"express": "^4.17.1",
